@@ -1,9 +1,11 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { Button, Card, Alert, Modal } from 'shadcn/ui';
 import ZkShuffleGameABI from '../artifacts/contracts/ZkShuffleGame.sol/ZkShuffleGame.json';
 
-const zkShuffleGameAddress = 'YOUR_CONTRACT_ADDRESS_HERE';
+const zkShuffleGameAddress = '';
 
 export default function Home() {
     const [provider, setProvider] = useState<ethers.providers.Web3Provider | null>(null);
