@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "@zkshuffle/sdk/contracts/ZkShuffle.sol";
+import "@zk-shuffle/contracts/contracts/shuffle/IShuffleStateManager.sol";
+import "@zk-shuffle/contracts/contracts/shuffle/IBaseGame.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract ZkShuffleGame is Ownable {
+
     enum GameState { WaitingForPlayers, Shuffling, Dealing, InProgress, Finished }
 
     struct Player {
@@ -14,7 +16,6 @@ contract ZkShuffleGame is Ownable {
     }
 
     GameState public gameState;
-    ZkShuffle public zkShuffle;
     Player[] public players;
     uint256 public maxPlayers;
     uint256 public pot;
@@ -24,9 +25,9 @@ contract ZkShuffleGame is Ownable {
     event PlayerHandDealt(address indexed player, uint256 hand);
     event GameEnded(address indexed winner, uint256 pot);
 
-    constructor(uint256 _maxPlayers, address _zkShuffleAddress) {
+        IShuffleStateManager public zkShuffle;
+    constructor(uint256 _maxPlayers, address owner) Ownable(owner) {
         maxPlayers = _maxPlayers;
-        zkShuffle = ZkShuffle(_zkShuffleAddress);
         gameState = GameState.WaitingForPlayers;
     }
 
@@ -52,7 +53,7 @@ contract ZkShuffleGame is Ownable {
     function startGame() internal {
         gameState = GameState.Shuffling;
         emit GameStarted();
-        zkShuffle.shuffleDeck();
+        zkShuffle.shuffle();
     }
 
     function dealHands() external onlyOwner {
