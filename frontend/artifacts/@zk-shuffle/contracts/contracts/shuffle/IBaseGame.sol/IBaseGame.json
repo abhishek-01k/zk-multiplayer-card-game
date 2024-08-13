@@ -1,0 +1,24 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IBaseGame",
+  "sourceName": "@zk-shuffle/contracts/contracts/shuffle/IBaseGame.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "cardConfig",
+      "outputs": [
+        {
+          "internalType": "enum DeckConfig",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

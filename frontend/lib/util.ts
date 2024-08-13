@@ -1,13 +1,15 @@
+// @ts-nocheck
+
 import bs58 from 'bs58'
 
 const CHAR_MAP = '123456789' + 'ABCDEFGHJKLMNPQRSTUVWXYZ' + 'abcdefghijkmnopqrstuvwxyz'
 
-export const encodeBs58 = (str) => {
+export const encodeBs58 = (str : string) => {
   const base58str = stringToBase58(str)
   const int = base58ToInt(base58str)
   return int
 }
-export const decodeBs58 = (int) => {
+export const decodeBs58 = (int : number) => {
   const bs58str = intToBase58(BigInt(int))
   const str = base58ToString(bs58str)
   return str

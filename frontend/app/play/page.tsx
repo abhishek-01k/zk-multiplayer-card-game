@@ -1,14 +1,28 @@
+// @ts-nocheck
 "use client";
 
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { Button, Card, Alert, Modal } from 'shadcn/ui';
-import ZkShuffleGameABI from '../artifacts/contracts/ZkShuffleGame.sol/ZkShuffleGame.json';
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+  } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
+  
+import ZkShuffleGameABI from '@/artifacts/contracts/ZkShuffleGame.sol/ZkShuffleGame.json';
 
 const zkShuffleGameAddress = '';
 
 export default function Home() {
-    const [provider, setProvider] = useState<ethers.providers.Web3Provider | null>(null);
     const [gameContract, setGameContract] = useState<ethers.Contract | null>(null);
     const [players, setPlayers] = useState<string[]>([]);
     const [pot, setPot] = useState<number>(0);
@@ -18,7 +32,6 @@ export default function Home() {
     useEffect(() => {
         if (typeof window.ethereum !== 'undefined') {
             const newProvider = new ethers.providers.Web3Provider(window.ethereum);
-            setProvider(newProvider);
 
             const contract = new ethers.Contract(
                 zkShuffleGameAddress,
@@ -82,9 +95,9 @@ export default function Home() {
                     </ul>
                 </Card>
             </div>
-            <Modal show={showModal} onClose={() => setShowModal(false)}>
+            <div show={showModal} onClose={() => setShowModal(false)}>
                 <Alert variant="success">Game Finished!</Alert>
-            </Modal>
+            </div>
         </div>
     );
 }

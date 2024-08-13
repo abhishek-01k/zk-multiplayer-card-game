@@ -37,7 +37,7 @@ export default function CreateGamePage() {
               <div className='text-white font-black text-right text-6xl'>CREATE A GAME</div>
               <div className='text-white font-black text-right'>
                 Choose the settings for you new match.<br/>
-                The power's in your hands.
+                The power&apos;s in your hands.
               </div>
 
               <div className='text-right'>

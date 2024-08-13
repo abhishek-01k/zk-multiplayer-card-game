@@ -39,7 +39,7 @@ export default function ShareLink({ onClose, link }) {
       </div>
       <div className='flex justify-center'>
         <StyledButton className='bg-[#ff9000] m-2' roundedStyle='rounded-full' onClick={ () => { router.push(link) } }>
-          <div className='text-2xl' >LET'S GO</div>
+          <div className='text-2xl' >LET&apos;S GO</div>
         </StyledButton>
       </div>
     </FrameBox>

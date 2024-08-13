@@ -10,7 +10,6 @@ contract ZkShuffleGame is IBaseGame, Ownable {
     using EnumerableSet for EnumerableSet.AddressSet;
 
     enum GameState { WaitingForPlayers, Shuffling, Dealing, InProgress, Finished }
-    enum DeckConfig { Deck5Card, Deck30Card, Deck52Card }
 
     struct Player {
         address playerAddress;
@@ -104,6 +103,10 @@ contract ZkShuffleGame is IBaseGame, Ownable {
         gameState = GameState.InProgress;
     }
 
+    function cardConfig() external override view returns (DeckConfig) {
+        return deckConfig;
+    }
+
     function endGame(uint256 winnerIndex) external onlyOwner {
         require(gameState == GameState.InProgress, "Game is not in progress");
         require(winnerIndex < players.length, "Invalid winner index");
@@ -125,10 +128,6 @@ contract ZkShuffleGame is IBaseGame, Ownable {
 
     function isPlayerInGame(address player) internal view returns (bool) {
         return activePlayers.contains(player);
-    }
-
-    function cardConfig() external override view returns (DeckConfig) {
-        return deckConfig;
     }
 
     function allowJoinGame() external onlyOwner {
