@@ -17,6 +17,8 @@ The zkShuffle Card Game is a decentralized, multiplayer card game built on block
 
 ## Smart Contract Overview
 
+![Screenshot 2024-08-13 221326](https://github.com/user-attachments/assets/608156b7-fdcd-4326-86a3-269e432a27bc)
+
 ### `ShuffleGameInfo`
 A struct that holds immutable information about each game:
 - `numCards`: The total number of cards in the game.
@@ -66,6 +68,8 @@ Allows a player to join an existing lobby. If the lobby is full, the player will
 5. **Game End**: The game ends when all rounds are completed or a player reaches the win condition. The `endGame()` function then distributes rewards, including in-game tokens.
 
 6. **Statistics and Streaming**: Player statistics are updated after each game, and live streaming options allow others to watch ongoing games.
+
+![Screenshot 2024-08-13 221520](https://github.com/user-attachments/assets/5a4fa26b-6c0e-4ac6-8afa-9ec269359a53)
 
 ## Privacy with zkShuffle by Manta Network
 
